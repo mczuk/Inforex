@@ -1,10 +1,11 @@
 <?php
 
 
-class TaskProcessorUploadZipTxt extends ATaskProcessor{
+class TaskProcessorUploadZip extends ATaskProcessor{
 
     var $subcorpora = array();
     var $autosplit = false;
+    var $formats = array("txt" => 2, "xml" => 1);
 
     function process(){
         $params = $this->getParameters();
@@ -48,7 +49,7 @@ class TaskProcessorUploadZipTxt extends ATaskProcessor{
             $filename = basename($path, ".".$file_extension);
             $basename = basename($filename);
 
-            if ( $file_extension != "txt" ){
+            if ( $file_extension != "txt" and  $file_extension != "xml" ){
                 continue;
             }
 
@@ -80,7 +81,7 @@ class TaskProcessorUploadZipTxt extends ATaskProcessor{
             $document['filename'] = $filename;
             $document['content'] = file_get_contents($path);
             $document['status'] = 2;
-            $document['format_id'] = 2; // TXT
+            $document['format_id'] = $this->formats[$file_extension];
             $db->insert("reports", $document);
 
             $report_id = $db->last_id();

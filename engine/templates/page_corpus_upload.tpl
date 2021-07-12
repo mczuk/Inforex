@@ -45,8 +45,8 @@
                 <label for="inputEmail" class="control-label col-xs-1">Zip file</label>
                 <div class="col-xs-4">
                     <input type="file" name="files" class="form-control" id="inputEmail" placeholder="Email">
-                    The Zip file must contain a set of <em>txt</em> files. File's metadata should be stored in a
-                    <em>ini</em> file with the same name as the <em>txt</em> file. The <em>ini</em> file must have the
+                    The Zip file must contain a set of <em>txt</em> or <em>xml</em> files. Files' metadata should be stored in an
+                    optional <em>ini</em> file with the same name as the <em>txt</em> file. The <em>ini</em> file must have the
                     following format:
                     <br/>
                     <pre style="white-space: pre-wrap">[metadata]

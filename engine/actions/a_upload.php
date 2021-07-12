@@ -45,7 +45,7 @@ class Action_upload extends CAction{
         $task->setCorpusId($corpus['id']);
         $task->setParameters(json_encode($params));
         $task->setUserId($user['user_id']);
-        $task->setType("upload-zip-txt");
+        $task->setType("upload-zip");
         $task->setDescription("Upload $name");
         $task->insert();
 

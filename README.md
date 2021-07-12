@@ -70,7 +70,8 @@ and the Inforex source code is linked to the container as an external storage.
 Before building the docker install *Composer*, *Docker* and *Docker Compose* running the following command:
 
 ```bash
-sudo apt-get install composer docker docker-compose
+sudo apt install php-zip php-dom
+sudo apt install composer docker docker-compose
 ```
 Than build the docker by executing the following script. 
 

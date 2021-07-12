@@ -113,7 +113,7 @@ class TaskDaemon{
 	function tick(){
 		$this->db->execute("BEGIN");
 
-		$types = array('liner2', 'update-ccl', 'export', 'nlprest2-tagger', 'upload-zip-txt');
+		$types = array('liner2', 'update-ccl', 'export', 'nlprest2-tagger', 'upload-zip');
 		$types = "'" . implode("','", $types) . "'";
 
 		$sql = "SELECT t.*, tr.report_id" .
@@ -177,9 +177,9 @@ class TaskDaemon{
 				if ( $task_type == "export" ){
 					$message = $this->processExport($task, $params);
 					$this->db->update("tasks", array("status"=>"done"), array("task_id"=>$task['task_id']));
-				} else if ( $task_type == "upload-zip-txt" ){
+				} else if ( $task_type == "upload-zip" ){
                     $oTask = new TableTask($task['task_id']);
-				    $taskProcessor = new TaskProcessorUploadZipTxt($oTask);
+				    $taskProcessor = new TaskProcessorUploadZip($oTask);
                     $taskProcessor->run();
 
                     print_r("done");
